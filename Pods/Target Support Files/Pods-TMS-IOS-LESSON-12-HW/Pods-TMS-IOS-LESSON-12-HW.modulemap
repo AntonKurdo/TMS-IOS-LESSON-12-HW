@@ -1,0 +1,6 @@
+framework module Pods_TMS_IOS_LESSON_12_HW {
+  umbrella header "Pods-TMS-IOS-LESSON-12-HW-umbrella.h"
+
+  export *
+  module * { export * }
+}
