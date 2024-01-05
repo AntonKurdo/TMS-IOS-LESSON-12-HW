@@ -5,22 +5,19 @@ class SecondViewController: UIViewController {
     
     let screenSize: CGRect = UIScreen.main.bounds
     
-    
-    var delegate: InputsDelegate?
+    weak var delegate: InputsDelegate?
     
     var button = UIConstructor.createButton(title: "Approve", cornerRadius: 8, font: .italicSystemFont(ofSize: 20), backgroundColor: .purple, tag: nil)
     
     var textFieldFirst = UIConstructor.createTextField()
     var textFieldSecond = UIConstructor.createTextField()
     var textFieldThird = UIConstructor.createTextField()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemYellow
-        
-        let vc = ViewController()
-        self.delegate = vc
-        
+        view.layoutIfNeeded()
+        view.layoutSubviews()
         
         setupButton()
         
@@ -41,15 +38,17 @@ class SecondViewController: UIViewController {
         }
         
         button.addAction(UIAction(handler: { _ in
-            if let delegate = self.delegate {
-                delegate.recieveString(text: "first: \(self.textFieldFirst.text ?? "")")
-
+            if let del = self.delegate {
+                del.recieveString(text: "first: \(self.textFieldFirst.text ?? "") \nsecond: \(self.textFieldSecond.text ?? "") \nthird: \(self.textFieldThird.text ?? "")")
+            } else {
+                print("delegate is nil")
             }
             self.navigationController?.popViewController(animated: true)
             
         }), for: .touchUpInside)
         
     }
+
     
     func setupTextField(tf: UITextField, offset: ConstraintOffsetTarget) {
         view.addSubview(tf)
@@ -62,4 +61,5 @@ class SecondViewController: UIViewController {
         
     }
 }
+
 

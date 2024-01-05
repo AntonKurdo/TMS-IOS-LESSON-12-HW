@@ -12,12 +12,11 @@ class UIConstructor {
     static func createLabel(text: String, textColor: UIColor = UIColor.white, textAlignment: NSTextAlignment = .center, font: UIFont = UIFont.boldSystemFont(ofSize: 16), tag: Int?) -> UILabel {
         return {
             let label = UILabel()
-            label.numberOfLines = 0
+//            label.numberOfLines = 0
             label.text = text
             label.textColor = textColor
-            label.textAlignment = textAlignment
+//            label.textAlignment = textAlignment
             label.font = font
-            label.translatesAutoresizingMaskIntoConstraints = false
             if(tag != nil) {
                 label.tag = tag!
             }
